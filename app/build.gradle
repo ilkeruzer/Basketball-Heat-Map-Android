@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -9,12 +10,14 @@ android {
 
     defaultConfig {
         applicationId "com.ilkeruzer.basketballheatmap"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "PROJECT_URL", "\"http://ec2-18-188-69-79.us-east-2.compute.amazonaws.com:3000/\""
     }
 
     buildTypes {
@@ -41,4 +44,38 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //GraphView
+    implementation 'com.jjoe64:graphview:4.2.2'
+
+    //ProgressBar
+    implementation 'com.timqi.sectorprogressview:library:2.0.1'
+
+    //Retrofit
+    def retrofitVersion = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    //Coroutines
+    def coroutinesVersion = "1.4.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
+    //Helper for easy request with retrofit & view model
+    implementation "com.github.murgupluoglu:request-android:4.2.0"
+
+    //LiveData and ViewModel
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
+    //Koin
+    def koinVersion = "2.1.6"
+    implementation "org.koin:koin-android:$koinVersion"
+    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+
+    //Room
+    def roomVersion = "2.3.0-beta01"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 }

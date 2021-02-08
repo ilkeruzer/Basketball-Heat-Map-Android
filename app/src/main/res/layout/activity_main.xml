@@ -1,18 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:src="@drawable/court"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/graph"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/changeUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Change User"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <com.timqi.sectorprogressview.ColorfulRingProgressView
+            android:id="@+id/sectorProgress"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="60dp"
+            app:bgColor="#e5e5e5"
+            app:fgColorEnd="@color/purple_700"
+            app:fgColorStart="#ffe400"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/rateTitleText"
+            app:layout_constraintTop_toBottomOf="@+id/rateTitleText"
+            app:startAngle="0"
+            app:strokeWidth="21dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rateTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rate Success"
+            android:textSize="24sp"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/purple_700"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/changeUser"
+            android:layout_marginLeft="20dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/sectorProgress"
+            app:layout_constraintEnd_toEndOf="@+id/sectorProgress"
+            app:layout_constraintStart_toStartOf="@+id/sectorProgress"
+            app:layout_constraintTop_toTopOf="@+id/sectorProgress"
+            tools:text="%75" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/totalShot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:paddingStart="12sp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/purple_500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sectorProgress"
+            app:layout_constraintTop_toTopOf="@+id/sectorProgress"
+            tools:text="Total Shoot: 754"
+            tools:ignore="RtlSymmetry" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/successShot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/purple_500"
+            android:paddingStart="12sp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/totalShot"
+            app:layout_constraintStart_toStartOf="@+id/totalShot"
+            app:layout_constraintTop_toBottomOf="@+id/totalShot"
+            tools:text="Total Shoot: 754"
+            tools:ignore="RtlSymmetry" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/failShot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:paddingStart="12sp"
+            android:textColor="@color/purple_500"
+            app:layout_constraintEnd_toEndOf="@+id/successShot"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="@+id/successShot"
+            app:layout_constraintTop_toBottomOf="@+id/successShot"
+            tools:text="Total Shoot: 754"
+            tools:ignore="RtlSymmetry" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
