@@ -84,40 +84,35 @@ class MainActivity : AppCompatActivity() {
                     it.say < 20 -> series1.size = 42f
                 }
 
-                when {
-                    it.say  <= 12.5 -> {
-                        series1.color = Color.rgb(178, 24, 43)
-                        series1.appendData(DataPoint(x, y), false, 1000)
-                    }
-                    it.say in 13..25 -> {
-                        series1.color = Color.rgb(244, 109, 67)
-                        series1.appendData(DataPoint(x, y), false, 1000)
-                    }
-                    it.say in 26..37.5.roundToInt() -> {
-                        series1.color = Color.rgb(253, 174, 97)
-                        series1.appendData(DataPoint(x, y), false, 1000)
-                    }
-                    it.say in 38..50 -> {
-                        series1.color = Color.rgb(254, 224, 139)
-                        series1.appendData(DataPoint(x, y), false, 1000)
-                    }
-                    it.say in 51..62.5.roundToInt() -> {
-                        series1.color = Color.rgb(230, 245, 152)
-                        series1.appendData(DataPoint(x, y), false, 1000)
-                    }
-                    it.say in 63..75 -> {
-                        series1.color = Color.rgb(171, 221, 164)
-                        series1.appendData(DataPoint(x, y), false, 1000)
-                    }
-                    it.say in 76..87.5.roundToInt() -> {
-                        series1.color = Color.rgb(102, 194, 165)
-                        series1.appendData(DataPoint(x, y), false, 1000)
-                    }
-                    it.say in 88..100 -> {
-                        series1.color = Color.rgb(50, 136, 189)
-                        series1.appendData(DataPoint(x, y), false, 1000)
-                    }
-                    else -> {}
+                if (it.success > 0.0 && it.success < 12.5) {
+                    series1.color = Color.rgb(178, 24, 43)
+                    series1.appendData(DataPoint(x, y), false, 1000)
+                } else if (it.success > 12.5 && it.success < 25.0) {
+                    series1.color = Color.rgb(244, 109, 67)
+                    series1.appendData(DataPoint(x, y), false, 1000)
+                   // mScatterPlot.addSeries(series1)
+                } else if (it.success > 25.0 && it.success < 37.5) {
+                    series1.color = Color.rgb(253, 174, 97)
+                    series1.appendData(DataPoint(x, y), false, 1000)
+                } else if (it.success > 37.5 && it.success < 50.0) {
+                    series1.color = Color.rgb(254, 224, 139)
+                    series1.appendData(DataPoint(x, y), false, 1000)
+
+                } else if (it.success >= 50.0 && it.success < 62.5) {
+                    series1.color = Color.rgb(230, 245, 152)
+                    series1.appendData(DataPoint(x, y), false, 1000)
+
+                } else if (it.success > 62.5 && it.success < 75.0) {
+                    series1.color = Color.rgb(171, 221, 164)
+                    series1.appendData(DataPoint(x, y), false, 1000)
+                } else if (it.success > 75.0 && it.success < 87.5) {
+                    series1.color = Color.rgb(102, 194, 165)
+                    series1.appendData(DataPoint(x, y), false, 1000)
+
+                } else if (it.success > 87.5 && it.success <= 100) {
+                    series1.color = Color.rgb(50, 136, 189)
+                    series1.appendData(DataPoint(x, y), false, 1000)
+
                 }
 
                 mScatterPlot.addSeries(series1)
