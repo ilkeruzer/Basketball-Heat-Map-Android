@@ -66,6 +66,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+
     private fun getAllFilterData() {
         xyValueArray = ArrayList()
         viewModel.getFilterShot().observe(this, { list ->
